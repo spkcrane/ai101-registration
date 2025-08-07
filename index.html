@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สมัครคอร์ส AI 101 - Thai Le CHa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --maroon-primary: #800020;
+            --maroon-secondary: #A0002A;
+            --maroon-light: #B91B3C;
+            --gold-primary: #B8860B;
+            --gold-secondary: #DAA520;
+            --gold-accent: #FFD700;
+            --background: #FEF7F0;
+            --text-dark: #2D1B1B;
+            --accent-red: #8B0000;
+            --white: #FFFFFF;
+            --shadow-gold: 0 4px 20px rgba(184, 134, 11, 0.15);
+            --shadow-maroon: 0 4px 20px rgba(128, 0, 32, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Sarabun', 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--text-dark);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .english-text {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, var(--maroon-primary), var(--maroon-secondary), var(--gold-primary));
+            color: var(--white);
+            text-align: center;
+            padding: 60px 30px;
+            border-radius: 20px 20px 0 0;
+            margin-bottom: 0;
+            box-shadow: var(--shadow-maroon);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header-description {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .header-disclaimer {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            font-style: italic;
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid var(--gold-accent);
+        }
+
+        /* Form Styles */
+        .form-container {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 0 0 20px 20px;
+            box-shadow: var(--shadow-gold);
+        }
+
+        .form-section {
+            margin-bottom: 40px;
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid var(--gold-secondary);
+            background: linear-gradient(145deg, var(--white), rgba(254, 247, 240, 0.3));
+            box-shadow: var(--shadow-gold);
+        }
+
+        .form-section h2 {
+            color: var(--maroon-primary);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            border-bottom: 3px solid var(--gold-primary);
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .required {
+            color: var(--accent-red);
+        }
+
+        input[type="text"], 
+        input[type="email"], 
+        input[type="tel"], 
+        select, 
+        textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid rgba(184, 134, 11, 0.3);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: var(--white);
+            min-height: 44px;
+        }
+
+        input:focus, 
+        select:focus, 
+        textarea:focus {
+            outline: none;
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.1);
+            transform: scale(1.02);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Radio and Checkbox Styles */
+        .radio-group, .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .radio-item, .checkbox-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border: 2px solid rgba(184, 134, 11, 0.2);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+
+        .radio-item:hover, .checkbox-item:hover {
+            border-color: var(--gold-primary);
+            background: rgba(254, 247, 240, 0.5);
+        }
+
+        .radio-item input[type="radio"], 
+        .checkbox-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+            cursor: pointer;
+            min-width: 20px;
+        }
+
+        .red-text {
+            color: var(--accent-red);
+            font-weight: 500;
+        }
+
+        /* Conditional Fields */
+        .conditional-field {
+            margin-top: 15px;
+            padding: 20px;
+            border: 2px solid var(--gold-accent);
+            border-radius: 10px;
+            background: rgba(255, 215, 0, 0.05);
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+
+        .conditional-field.show {
+            opacity: 1;
+            max-height: 500px;
+        }
+
+        .conditional-field.fadeInGold {
+            animation: fadeInGold 0.5s ease-in;
+        }
+
+        @keyframes fadeInGold {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Info Box */
+        .info-box {
+            background: linear-gradient(135deg, var(--gold-accent), var(--gold-secondary));
+            color: var(--text-dark);
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 15px;
+            box-shadow: var(--shadow-gold);
+            border-left: 5px solid var(--maroon-primary);
+        }
+
+        .info-box h4 {
+            margin-bottom: 10px;
+            color: var(--maroon-primary);
+        }
+
+        /* Validation Messages */
+        .validation-message {
+            background: rgba(184, 134, 11, 0.1);
+            color: var(--gold-primary);
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 8px;
+            font-size: 0.9rem;
+            border-left: 4px solid var(--gold-primary);
+        }
+
+        .encouraging-message {
+            background: rgba(128, 0, 32, 0.1);
+            color: var(--maroon-primary);
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 8px;
+            font-size: 0.9rem;
+            border-left: 4px solid var(--maroon-primary);
+        }
+
+        /* Submit Button */
+        .submit-button {
+            background: linear-gradient(135deg, var(--maroon-primary), var(--maroon-secondary));
+            color: var(--white);
+            padding: 18px 40px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 300px;
+            margin: 30px auto 0;
+            display: block;
+            box-shadow: var(--shadow-maroon);
+            min-height: 44px;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(128, 0, 32, 0.3);
+            background: linear-gradient(135deg, var(--maroon-secondary), var(--maroon-light));
+        }
+
+        .submit-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Success Message */
+        .success-container {
+            background: linear-gradient(135deg, var(--gold-accent), var(--gold-secondary));
+            color: var(--text-dark);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 20px 0;
+            box-shadow: var(--shadow-gold);
+        }
+
+        .success-container h2 {
+            color: var(--maroon-primary);
+            margin-bottom: 25px;
+            font-size: 2rem;
+        }
+
+        .status-message {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            font-size: 1.1rem;
+            font-weight: 500;
+            border-left: 5px solid var(--maroon-primary);
+        }
+
+        .next-steps {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .next-steps h3 {
+            color: var(--maroon-primary);
+            margin-bottom: 15px;
+        }
+
+        .next-steps ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .next-steps li {
+            padding: 8px 0;
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background: var(--text-dark);
+            color: var(--white);
+            margin-top: 50px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        /* Error Message */
+        .error-message {
+            background: rgba(139, 0, 0, 0.1);
+            color: var(--accent-red);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid var(--accent-red);
+        }
+
+        /* Loading State */
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .header {
+                padding: 40px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .form-container {
+                padding: 25px;
+            }
+            
+            .form-section {
+                padding: 20px;
+            }
+            
+            .radio-group, .checkbox-group {
+                gap: 8px;
+            }
+            
+            .radio-item, .checkbox-item {
+                padding: 10px;
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.6rem;
+            }
+            
+            .header-description {
+                font-size: 1rem;
+            }
+            
+            .form-container {
+                padding: 20px;
+            }
+            
+            .form-section {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>สมัครคอร์ส AI 101 - Thai Le CHa</h1>
+            <div class="header-description">
+                <p>🎯 เปิดโลกของ AI ที่มากกว่าการแชทคุยกับ ChatGPT</p>
+                <p>👥 สอนโดยทีมหลังบ้านของสมาคมเองค่ะ ที่กำลังใช้ AI Transformation ในการทำงานจริง</p>
+                <p>📚 เนื้อหาจะปรับตามพื้นฐานของแต่ละรุ่น เพื่อให้ทุกท่านได้รับความรู้ที่เหมาะสมที่สุดค่ะ</p>
+            </div>
+            <div class="header-disclaimer">
+                <p>💡 * เราไม่ใช่ผู้เชี่ยวชาญ AI แต่เราเป็นผู้ใช้งาน AI ที่ใช้ในหลายด้าน มาแบ่งปันประสบการณ์จริงกันค่ะ</p>
+            </div>
+        </header>
+
+        <main class="form-container">
+            <form id="registrationForm" novalidate>
+                <!-- Personal Information -->
+                <div class="form-section">
+                    <h2>📝 ข้อมูลส่วนตัว</h2>
+                    
+                    <div class="form-group">
+                        <label for="fullName">ชื่อ-นามสกุล (ภาษาอังกฤษ) <span class="required">*</span></label>
+                        <input type="text" id="fullName" name="fullName" class="english-text" 
+                               placeholder="First Name Last Name (สำหรับออก Certificate)" 
+                               pattern="[A-Za-z\s]+" required>
+                        <div class="validation-message" style="display: none;">
+                            😊 ชื่อ-นามสกุลภาษาอังกฤษสำหรับออก Certificate จะช่วยให้เอกสารของคุณสมบูรณ์ค่ะ
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">อีเมล <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" class="english-text"
+                               placeholder="example@email.com" required>
+                        <div class="validation-message" style="display: none;">
+                            📧 อีเมลจะเป็นช่องทางหลักในการติดต่อและส่งเอกสารคอร์สให้คุณค่ะ
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">เบอร์โทรศัพท์ <span class="required">*</span></label>
+                        <input type="tel" id="phone" name="phone" 
+                               placeholder="08X-XXX-XXXX" 
+                               pattern="0[0-9]{1}-[0-9]{3}-[0-9]{4}" required>
+                        <div class="validation-message" style="display: none;">
+                            📱 เบอร์โทรจะช่วยให้เราติดต่อคุณได้รวดเร็วในกรณีที่จำเป็นค่ะ
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ageRange">ช่วงอายุ <span class="required">*</span></label>
+                        <select id="ageRange" name="ageRange" required>
+                            <option value="">เลือกช่วงอายุของคุณ</option>
+                            <option value="18-27">18-27 ปี (Gen Z)</option>
+                            <option value="28-43">28-43 ปี (Millennial)</option>
+                            <option value="44-59">44-59 ปี (Gen X)</option>
+                            <option value="60-78">60-78 ปี (Baby Boomer)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Professional Background -->
+                <div class="form-section">
+                    <h2>💼 ข้อมูลการทำงาน</h2>
+                    
+                    <div class="form-group">
+                        <label for="occupation">อาชีพ <span class="required">*</span></label>
+                        <select id="occupation" name="occupation" required>
+                            <option value="">เลือกอาชีพของคุณ</option>
+                            <option value="วิศวกร">วิศวกร</option>
+                            <option value="เจ้าหน้าที่ความปลอดภัย">เจ้าหน้าที่ความปลอดภัย</option>
+                            <option value="วิทยากรเครน">วิทยากรเครน, วิทยากรความปลอดภัย</option>
+                            <option value="ผู้ประกอบการ">ผู้ประกอบการ</option>
+                            <option value="ช่างเทคนิค">ช่างเทคนิค</option>
+                            <option value="นิสิต">นิสิต, นักศึกษา</option>
+                            <option value="บุคคลทั่วไป">บุคคลทั่วไป</option>
+                            <option value="อื่นๆ">อื่นๆ</option>
+                        </select>
+                        
+                        <div id="otherOccupation" class="conditional-field">
+                            <label for="otherOccupationText">โปรดระบุอาชีพอื่นๆ <span class="required">*</span></label>
+                            <input type="text" id="otherOccupationText" name="otherOccupationText" 
+                                   placeholder="ระบุอาชีพของคุณ">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Membership Status -->
+                <div class="form-section">
+                    <h2>👥 สถานะสมาชิก</h2>
+                    
+                    <div class="form-group">
+                        <label>สถานะสมาชิก Thai Le CHa <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="member" name="membershipStatus" value="เป็นสมาชิกแล้ว" required>
+                                <label for="member">เป็นสมาชิกแล้ว ✅</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="notMember" name="membershipStatus" value="ยังไม่ได้เป็นสมาชิก" required>
+                                <label for="notMember">ยังไม่ได้เป็นสมาชิก</label>
+                            </div>
+                        </div>
+                        
+                        <div id="membershipInfo" class="conditional-field">
+                            <div class="info-box">
+                                <h4>💡 สมัครสมาชิกฟรี!</h4>
+                                <p>ติดต่อสมัครผ่าน LINE OA: @lecha</p>
+                                <p>กดที่ Menu แล้วสมัครได้เลย สมัครฟรีค่ะ! 🎉</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="form-section">
+                    <h2>📞 ข้อมูลการติดต่อ</h2>
+                    
+                    <div class="form-group">
+                        <label for="lineId">LINE ID <span class="required">*</span></label>
+                        <input type="text" id="lineId" name="lineId" class="english-text"
+                               placeholder="your.line.id" required>
+                        <div class="validation-message" style="display: none;">
+                            💬 LINE ID จะใช้สำหรับเชิญเข้ากลุ่มแชทคอร์สและการสื่อสารระหว่างเรียนค่ะ
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Experience Assessment -->
+                <div class="form-section">
+                    <h2>🤖 ประเมินประสบการณ์ AI</h2>
+                    
+                    <div class="form-group">
+                        <label>ประวัติการจ่ายเงินสำหรับ AI Services <span class="required">*</span></label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="neverPaid" name="aiPayment" value="ยังไม่เคยจ่ายเลย">
+                                <label for="neverPaid" class="red-text">ยังไม่เคยจ่ายเลย</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="chatgptPlus" name="aiPayment" value="ChatGPT Plus">
+                                <label for="chatgptPlus">ChatGPT Plus</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="claudePro" name="aiPayment" value="Claude Pro">
+                                <label for="claudePro">Claude Pro</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="geminiAdvanced" name="aiPayment" value="Gemini Advanced">
+                                <label for="geminiAdvanced">Gemini Advanced</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="perplexityPro" name="aiPayment" value="Perplexity Pro">
+                                <label for="perplexityPro">Perplexity Pro</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="midjourney" name="aiPayment" value="Midjourney">
+                                <label for="midjourney">Midjourney</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="grok" name="aiPayment" value="Grok (X Premium)">
+                                <label for="grok">Grok (X Premium)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="otherAI" name="aiPayment" value="Other AI services">
+                                <label for="otherAI">Other AI services</label>
+                            </div>
+                        </div>
+                        
+                        <div id="otherAIServices" class="conditional-field">
+                            <label for="otherAIServicesText">โปรดระบุ AI Services อื่นๆ</label>
+                            <input type="text" id="otherAIServicesText" name="otherAIServicesText" 
+                                   placeholder="ระบุ AI Services ที่ใช้">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>ความรู้เรื่อง Prompt <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="promptNo" name="promptKnowledge" value="ไม่รู้จัก" required>
+                                <label for="promptNo">ไม่รู้จัก</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="promptYes" name="promptKnowledge" value="รู้จัก" required>
+                                <label for="promptYes">รู้จัก</label>
+                            </div>
+                        </div>
+                        
+                        <div id="promptFramework" class="conditional-field">
+                            <label for="promptFrameworkText">Framework ที่ใช้ (ถ้ารู้จัก)</label>
+                            <input type="text" id="promptFrameworkText" name="promptFrameworkText" 
+                                   placeholder="เช่น STAR, CLEAR, โซ่ความคิด">
+                        </div>
+                        
+                        <div id="promptEncouraging" class="encouraging-message" style="display: none;">
+                            🌱 ไม่เป็นไรค่ะ เราจะสอนตั้งแต่พื้นฐานให้เข้าใจง่ายๆ!
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>ความรู้เรื่อง API <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="apiNo" name="apiKnowledge" value="ไม่รู้จัก" required>
+                                <label for="apiNo">ไม่รู้จัก</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="apiYes" name="apiKnowledge" value="รู้จัก" required>
+                                <label for="apiYes">รู้จัก</label>
+                            </div>
+                        </div>
+                        
+                        <div id="apiUsage" class="conditional-field">
+                            <label for="apiUsageText">ใช้ API ทำอะไรบ้างคะ? (ถ้ารู้จัก)</label>
+                            <textarea id="apiUsageText" name="apiUsageText" 
+                                      placeholder="เล่าประสบการณ์การใช้ API"></textarea>
+                        </div>
+                        
+                        <div id="apiEncouraging" class="encouraging-message" style="display: none;">
+                            💡 ไม่ต้องกังวลค่ะ เราจะอธิบายให้เข้าใจง่ายๆ ทีละขั้น!
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Automation Tools <span class="required">*</span></label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="noAutomation" name="automationTools" value="ยังไม่รู้จักเลย">
+                                <label for="noAutomation" class="red-text">ยังไม่รู้จักเลย</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="n8n" name="automationTools" value="n8n">
+                                <label for="n8n">n8n</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="make" name="automationTools" value="Make.com">
+                                <label for="make">Make.com</label>
+                            </div>
+                        </div>
+                        
+                        <div id="automationEncouraging" class="encouraging-message" style="display: none;">
+                            ✨ จะได้เรียนรู้ใหม่ด้วยกัน!
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Vibe Coding <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="vibeNo" name="vibeCoding" value="ไม่รู้จัก" required>
+                                <label for="vibeNo">ไม่รู้จัก</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="vibeYes" name="vibeCoding" value="รู้จัก" required>
+                                <label for="vibeYes">รู้จัก</label>
+                            </div>
+                        </div>
+                        
+                        <div id="vibeTools" class="conditional-field">
+                            <label for="vibeToolsText">รู้จักตัวไหนบ้างคะ? เช่น Cursor, v0.dev, Lovable, Bolt.new, Windsurf หรืออื่นๆ (ถ้ารู้จัก)</label>
+                            <textarea id="vibeToolsText" name="vibeToolsText" 
+                                      placeholder="ระบุเครื่องมือที่รู้จักและประสบการณ์การใช้งาน"></textarea>
+                        </div>
+                        
+                        <div id="vibeEncouraging" class="encouraging-message" style="display: none;">
+                            🚀 เทคโนโลยีใหม่มากเลยค่ะ เราจะแนะนำให้ค่อยๆ เรียนรู้!
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-button" id="submitButton">
+                    📝 ส่งใบสมัคร
+                </button>
+            </form>
+
+            <!-- Success Message (Hidden by default) -->
+            <div id="successMessage" class="success-container" style="display: none;">
+                <h2>ขอบคุณสำหรับการสมัครค่ะ! 🎉</h2>
+                
+                <div class="status-message">
+                    📝 เนื่องจากมีผู้สนใจสมัครจำนวนมาก<br>
+                    ตอนนี้คุณอยู่ใน Waiting List แล้วค่ะ
+                </div>
+                
+                <div class="next-steps">
+                    <h3>📞 ขั้นตอนถัดไป:</h3>
+                    <ul>
+                        <li>✅ เราจะติดต่อกลับภายใน 2-3 วันทำการ</li>
+                        <li>✅ เชิญเข้ากลุ่ม LINE เพื่อแจ้งข่าวสาร</li>
+                        <li>✅ ส่งเอกสารเตรียมตัวล่วงหน้า</li>
+                        <li>✅ แจ้งเมื่อมีที่ว่างหรือเปิดรุ่นใหม่</li>
+                    </ul>
+                </div>
+                
+                <p>ขอบคุณที่ให้ความสนใจกับคอร์ส AI 101 ค่ะ! ❤️</p>
+            </div>
+
+            <!-- Error Message (Hidden by default) -->
+            <div id="errorMessage" class="error-message" style="display: none;">
+                <h3>เกิดข้อผิดพลาดในการส่งข้อมูล</h3>
+                <p>กรุณาลองใหม่อีกครั้ง หรือติดต่อเราผ่าน LINE ID: @lecha</p>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>© 2024 สมาคม Thai Le CHa. สงวนลิขสิทธิ์ทุกประการ</p>
+            <p>เว็บไซต์นี้สร้างขึ้นเพื่อการศึกษาและพัฒนาทักษะ AI</p>
+            <p>ข้อมูลส่วนบุคคลจะได้รับการคุ้มครองตามนโยบายความเป็นส่วนตัว</p>
+        </footer>
+    </div>
+
+    <script>
+        // Progressive Disclosure functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Occupation conditional field
+            const occupationSelect = document.getElementById('occupation');
+            const otherOccupationField = document.getElementById('otherOccupation');
+            const otherOccupationInput = document.getElementById('otherOccupationText');
+
+            occupationSelect.addEventListener('change', function() {
+                if (this.value === 'อื่นๆ') {
+                    showConditionalField(otherOccupationField);
+                    otherOccupationInput.required = true;
+                } else {
+                    hideConditionalField(otherOccupationField);
+                    otherOccupationInput.required = false;
+                    otherOccupationInput.value = '';
+                }
+            });
+
+            // Membership status conditional field
+            const membershipRadios = document.querySelectorAll('input[name="membershipStatus"]');
+            const membershipInfo = document.getElementById('membershipInfo');
+
+            membershipRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (this.value === 'ยังไม่ได้เป็นสมาชิก') {
+                        showConditionalField(membershipInfo);
+                    } else {
+                        hideConditionalField(membershipInfo);
+                    }
+                });
+            });
+
+            // AI Services conditional field
+            const otherAICheckbox = document.getElementById('otherAI');
+            const otherAIField = document.getElementById('otherAIServices');
+
+            otherAICheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    showConditionalField(otherAIField);
+                } else {
+                    hideConditionalField(otherAIField);
+                    document.getElementById('otherAIServicesText').value = '';
+                }
+            });
+
+            // Prompt knowledge conditional fields
+            const promptRadios = document.querySelectorAll('input[name="promptKnowledge"]');
+            const promptFramework = document.getElementById('promptFramework');
+            const promptEncouraging = document.getElementById('promptEncouraging');
+
+            promptRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (this.value === 'รู้จัก') {
+                        showConditionalField(promptFramework);
+                        hideEncouragingMessage(promptEncouraging);
+                    } else {
+                        hideConditionalField(promptFramework);
+                        showEncouragingMessage(promptEncouraging);
+                        document.getElementById('promptFrameworkText').value = '';
+                    }
+                });
+            });
+
+            // API knowledge conditional fields
+            const apiRadios = document.querySelectorAll('input[name="apiKnowledge"]');
+            const apiUsage = document.getElementById('apiUsage');
+            const apiEncouraging = document.getElementById('apiEncouraging');
+
+            apiRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (this.value === 'รู้จัก') {
+                        showConditionalField(apiUsage);
+                        hideEncouragingMessage(apiEncouraging);
+                    } else {
+                        hideConditionalField(apiUsage);
+                        showEncouragingMessage(apiEncouraging);
+                        document.getElementById('apiUsageText').value = '';
+                    }
+                });
+            });
+
+            // Automation tools encouraging message
+            const automationCheckboxes = document.querySelectorAll('input[name="automationTools"]');
+            const automationEncouraging = document.getElementById('automationEncouraging');
+            const noAutomationCheckbox = document.getElementById('noAutomation');
+
+            automationCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    if (this === noAutomationCheckbox) {
+                        if (this.checked) {
+                            // Uncheck other automation tools
+                            automationCheckboxes.forEach(cb => {
+                                if (cb !== this) cb.checked = false;
+                            });
+                            showEncouragingMessage(automationEncouraging);
+                        } else {
+                            hideEncouragingMessage(automationEncouraging);
+                        }
+                    } else {
+                        if (this.checked) {
+                            noAutomationCheckbox.checked = false;
+                            hideEncouragingMessage(automationEncouraging);
+                        }
+                    }
+                });
+            });
+
+            // Vibe coding conditional fields
+            const vibeRadios = document.querySelectorAll('input[name="vibeCoding"]');
+            const vibeTools = document.getElementById('vibeTools');
+            const vibeEncouraging = document.getElementById('vibeEncouraging');
+
+            vibeRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (this.value === 'รู้จัก') {
+                        showConditionalField(vibeTools);
+                        hideEncouragingMessage(vibeEncouraging);
+                    } else {
+                        hideConditionalField(vibeTools);
+                        showEncouragingMessage(vibeEncouraging);
+                        document.getElementById('vibeToolsText').value = '';
+                    }
+                });
+            });
+
+            // Validation messages
+            const nameInput = document.getElementById('fullName');
+            const emailInput = document.getElementById('email');
+            const phoneInput = document.getElementById('phone');
+            const lineIdInput = document.getElementById('lineId');
+
+            nameInput.addEventListener('blur', function() {
+                const validationMsg = this.nextElementSibling;
+                if (this.value && !this.validity.patternMismatch) {
+                    validationMsg.style.display = 'block';
+                } else if (this.validity.patternMismatch) {
+                    validationMsg.style.display = 'block';
+                    validationMsg.style.background = 'rgba(139, 0, 0, 0.1)';
+                    validationMsg.style.color = 'var(--accent-red)';
+                    validationMsg.innerHTML = '❌ กรุณากรอกชื่อ-นามสกุลเป็นภาษาอังกฤษเท่านั้นค่ะ';
+                } else {
+                    validationMsg.style.display = 'none';
+                }
+            });
+
+            emailInput.addEventListener('blur', function() {
+                const validationMsg = this.nextElementSibling;
+                if (this.value && this.validity.valid) {
+                    validationMsg.style.display = 'block';
+                } else {
+                    validationMsg.style.display = 'none';
+                }
+            });
+
+            phoneInput.addEventListener('blur', function() {
+                const validationMsg = this.nextElementSibling;
+                if (this.value && this.validity.valid) {
+                    validationMsg.style.display = 'block';
+                } else {
+                    validationMsg.style.display = 'none';
+                }
+            });
+
+            lineIdInput.addEventListener('blur', function() {
+                const validationMsg = this.nextElementSibling;
+                if (this.value) {
+                    validationMsg.style.display = 'block';
+                } else {
+                    validationMsg.style.display = 'none';
+                }
+            });
+
+            // Form submission
+            const form = document.getElementById('registrationForm');
+            const submitButton = document.getElementById('submitButton');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                if (!form.checkValidity()) {
+                    form.reportValidity();
+                    return;
+                }
+
+                // Show loading state
+                submitButton.disabled = true;
+                submitButton.textContent = '⏳ กำลังส่งข้อมูล...';
+                form.classList.add('loading');
+
+                // Collect form data
+                const formData = new FormData(form);
+                const data = {};
+                
+                // Handle regular form fields
+                for (let [key, value] of formData.entries()) {
+                    if (data[key]) {
+                        // Handle multiple values (checkboxes)
+                        if (Array.isArray(data[key])) {
+                            data[key].push(value);
+                        } else {
+                            data[key] = [data[key], value];
+                        }
+                    } else {
+                        data[key] = value;
+                    }
+                }
+
+                // Handle checkboxes specifically
+                const aiPaymentCheckboxes = document.querySelectorAll('input[name="aiPayment"]:checked');
+                data.aiPayment = Array.from(aiPaymentCheckboxes).map(cb => cb.value);
+                
+                const automationCheckboxes = document.querySelectorAll('input[name="automationTools"]:checked');
+                data.automationTools = Array.from(automationCheckboxes).map(cb => cb.value);
+
+                // Add metadata
+                data.timestamp = new Date().toISOString();
+                data.source = 'AI 101 Registration Form';
+                data.formVersion = '1.0';
+
+                try {
+                    const response = await fetch('https://n8n-experiment.eastcrane.com/webhook-test/250817_ai101register', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data)
+                    });
+
+                    if (response.ok) {
+                        // Hide form and show success message
+                        form.style.display = 'none';
+                        successMessage.style.display = 'block';
+                        successMessage.scrollIntoView({ behavior: 'smooth' });
+                    } else {
+                        throw new Error('Network response was not ok');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    errorMessage.style.display = 'block';
+                    errorMessage.scrollIntoView({ behavior: 'smooth' });
+                } finally {
+                    // Reset button state
+                    submitButton.disabled = false;
+                    submitButton.textContent = '📝 ส่งใบสมัคร';
+                    form.classList.remove('loading');
+                }
+            });
+
+            // Helper functions
+            function showConditionalField(element) {
+                element.style.maxHeight = '500px';
+                element.style.opacity = '1';
+                element.classList.add('show', 'fadeInGold');
+                setTimeout(() => {
+                    element.classList.remove('fadeInGold');
+                }, 500);
+            }
+
+            function hideConditionalField(element) {
+                element.style.maxHeight = '0';
+                element.style.opacity = '0';
+                element.classList.remove('show');
+            }
+
+            function showEncouragingMessage(element) {
+                element.style.display = 'block';
+                setTimeout(() => {
+                    element.style.opacity = '1';
+                }, 50);
+            }
+
+            function hideEncouragingMessage(element) {
+                element.style.display = 'none';
+                element.style.opacity = '0';
+            }
+
+            // Phone number formatting
+            const phoneInput = document.getElementById('phone');
+            phoneInput.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length > 3 && value.length <= 6) {
+                    value = value.substring(0, 3) + '-' + value.substring(3);
+                } else if (value.length > 6) {
+                    value = value.substring(0, 3) + '-' + value.substring(3, 6) + '-' + value.substring(6, 10);
+                }
+                e.target.value = value;
+            });
+        });
+    </script>
+</body>
+</html>
